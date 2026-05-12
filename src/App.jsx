@@ -472,7 +472,9 @@ export default function App() {
                 <div className="reveal">
                   <div className="crm-project-img">
                     <img 
-                      src="/images/imat_dashboard.png" 
+                      src="/images/imat_dashboard.webp" 
+                      srcSet="/images/imat_dashboard-600.webp 600w, /images/imat_dashboard-1200.webp 1200w, /images/imat_dashboard.webp 1400w"
+                      sizes="(max-width: 768px) 100vw, 600px"
                       alt="IMAT - Intelligent Inventory Management and ERP Platform Dashboard View" 
                       loading="eager" 
                       decoding="async"
@@ -710,7 +712,9 @@ export default function App() {
                   </div>
                   <div className="crm-project-img">
                     <img 
-                      src="/images/CRM_home_admin.png" 
+                      src="/images/CRM_home_admin.webp" 
+                      srcSet="/images/CRM_home_admin-600.webp 600w, /images/CRM_home_admin-1200.webp 1200w, /images/CRM_home_admin.webp 1400w"
+                      sizes="(max-width: 768px) 100vw, 600px"
                       alt="Custom CRM Software Dashboard illustrating analytical charts and sales tracking columns" 
                       loading="lazy" 
                       decoding="async"

@@ -8,7 +8,7 @@
   --bg4: #1A1D30;
   --text: #EEF0F8;
   --text2: #C4C9DC;
-  --muted: #6B7394;
+  --muted: #8E96B7;
   --accent: #4F7EF7;
   --accent2: #7DA4FB;
   --accent-d: rgba(79, 126, 247, 0.12);
@@ -30,7 +30,7 @@
   --bg4: #E3E7F2;
   --text: #0D0F1C;
   --text2: #2A2F52;
-  --muted: #6B7394;
+  --muted: #555C7B;
   --accent: #3B6EF0;
   --accent2: #5A8BF5;
   --accent-d: rgba(59, 110, 240, 0.1);
@@ -2753,4 +2753,51 @@ textarea:focus-visible {
 [data-theme="light"] a:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
+}
+
+/* ============================================================
+   MOBILE PERFORMANCE, ACCESSIBILITY & REFLOW OPTIMIZATIONS
+============================================================ */
+@media (max-width: 768px) {
+  /* Tap targets sizing compliance (min 44x44px for touch interfaces) */
+  .theme-toggle,
+  .menu-btn {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.25rem !important;
+  }
+
+  /* Increase footer links tap area for comfortable touch targets */
+  .footer-link,
+  .footer-link-sub {
+    padding: 0.6rem 0.85rem !important;
+    display: inline-block;
+  }
+
+  /* Simplify high-end shadows and blurs on mobile to reduce GPU reflows and scroll-lag */
+  .crm-project-img,
+  .arch-box {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  .nav {
+    backdrop-filter: blur(8px) !important; /* Lighter blur for smoother mobile scroll performance */
+  }
+}
+
+/* Respect prefers-reduced-motion setting to guarantee 100/100 Lighthouse compliance */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

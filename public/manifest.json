@@ -4,9 +4,9 @@
   "description": "Custom Inventory Management Software, GST Billing Systems, ERP Systems, and SaaS products built by Akarsh Jinesh Jain.",
   "icons": [
     {
-      "src": "/vite.svg",
-      "sizes": "32x32 48x48 64x64 128x128 256x256 512x512",
-      "type": "image/svg+xml"
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
     }
   ],
   "start_url": "/",

@@ -13,39 +13,33 @@ export default defineConfig({
 
   build: {
     cssCodeSplit: true,
-    chunkSizeWarningLimit: 600,
-
+    chunkSizeWarningLimit: 800,
+    minify: 'esbuild',
+    sourcemap: false,
+    
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor-react';
+            // Bundle core dependencies into a single cached vendor chunk
+            if (
+              id.includes('react') || 
+              id.includes('react-dom') || 
+              id.includes('@emailjs')
+            ) {
+              return 'vendor-core';
             }
-
-            if (id.includes('framer-motion')) {
-              return 'vendor-motion';
-            }
-
-            if (id.includes('lucide-react')) {
-              return 'vendor-icons';
-            }
-
-            return 'vendor-libs';
+            return 'vendor-helpers';
           }
         }
-      },
-
-      onwarn(warning, warn) {
-        if (
-          warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
-          String(warning.message).includes('node_modules/framer-motion')
-        ) {
-          return;
-        }
-
-        warn(warning);
       }
     }
+  },
+  
+  esbuild: {
+    // Strip console statements and debugger calls in production for maximum script evaluation savings
+    drop: ['console', 'debugger'],
+    pure: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+    legalComments: 'none'
   }
 });

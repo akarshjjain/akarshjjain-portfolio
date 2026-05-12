@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import emailjs from '@emailjs/browser';
 
 // ---- EMAILJS CONFIG — fill these in after setting up at https://emailjs.com ----
@@ -281,16 +281,33 @@ export default function App() {
   }, [dark]);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    const els = document.querySelectorAll('.reveal');
-    els.forEach(el => obs.observe(el));
-    return () => obs.disconnect();
+    let active = true;
+    let obs;
+
+    const initObserver = () => {
+      if (!active) return;
+      obs = new IntersectionObserver(
+        (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+        { threshold: 0.08 }
+      );
+      const els = document.querySelectorAll('.reveal');
+      els.forEach(el => obs.observe(el));
+    };
+
+    // Defer DOM reads to the next frame to prevent layout thrashing & forced reflows
+    if (window.requestAnimationFrame) {
+      requestAnimationFrame(initObserver);
+    } else {
+      setTimeout(initObserver, 50);
+    }
+
+    return () => {
+      active = false;
+      if (obs) obs.disconnect();
+    };
   }, [view]);
 
-  const scrollTo = (id) => {
+  const scrollTo = useCallback((id) => {
     if (view !== 'home') {
       setView('home');
       window.history.pushState(null, '', '/');
@@ -301,17 +318,17 @@ export default function App() {
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
     setMenuOpen(false);
-  };
+  }, [view]);
 
-  const navigateToLegal = (targetView) => {
+  const navigateToLegal = useCallback((targetView) => {
     setView(targetView);
     const hash = targetView === 'privacy' ? '#privacy' : '#terms';
     window.history.pushState(null, '', hash);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     trackEvent('view_legal', 'Navigation', targetView);
-  };
+  }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     setSending(true);
     setSendError(false);
@@ -346,7 +363,7 @@ export default function App() {
     } finally {
       setSending(false);
     }
-  };
+  }, [form]);
 
   return (
     <>
@@ -1086,7 +1103,7 @@ export default function App() {
 }
 
 // ---- PRIVACY POLICY SECTION VIEW (AdSense Compliant) ----
-function PrivacyPolicyView({ setView, navigateToLegal }) {
+const PrivacyPolicyView = React.memo(function PrivacyPolicyView({ setView, navigateToLegal }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -1153,10 +1170,10 @@ function PrivacyPolicyView({ setView, navigateToLegal }) {
       </div>
     </section>
   );
-}
+});
 
 // ---- TERMS OF SERVICE SECTION VIEW (AdSense Compliant) ----
-function TermsOfServiceView({ setView, navigateToLegal }) {
+const TermsOfServiceView = React.memo(function TermsOfServiceView({ setView, navigateToLegal }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -1220,10 +1237,10 @@ function TermsOfServiceView({ setView, navigateToLegal }) {
       </div>
     </section>
   );
-}
+});
 
 // ---- ARCHITECTURE MOCKUP COMPONENT ----
-function ArchitectureMockup() {
+const ArchitectureMockup = React.memo(function ArchitectureMockup() {
   return (
     <div className="arch-wrap reveal">
       <div className="arch-header">IMAT — Multi-Engine System Architecture</div>
@@ -1256,10 +1273,10 @@ function ArchitectureMockup() {
       </div>
     </div>
   );
-}
+});
 
 // ---- DASHBOARD MOCKUP COMPONENT ----
-function DashboardMockup() {
+const DashboardMockup = React.memo(function DashboardMockup() {
   return (
     <div className="mockup-wrap">
       <div className="mockup-bar">
@@ -1315,10 +1332,10 @@ function DashboardMockup() {
       </div>
     </div>
   );
-}
+});
 
 // ---- CRM MOCKUP COMPONENT ----
-function CRMMockup() {
+const CRMMockup = React.memo(function CRMMockup() {
   return (
     <div className="crm-mockup">
       <div className="mockup-wrap">
@@ -1354,4 +1371,4 @@ function CRMMockup() {
       </div>
     </div>
   );
-}
+});

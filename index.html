@@ -98,7 +98,7 @@
         cleanupListeners();
       }
 
-      const events = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart'];
+      const events = ['mousedown', 'keydown', 'scroll', 'touchstart'];
       function cleanupListeners() {
         events.forEach(e => window.removeEventListener(e, loadThirdPartyScripts));
       }

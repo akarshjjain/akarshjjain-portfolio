@@ -1,8 +1,13 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
+// TOGGLE THIS CONFIGURATION ACCORDING TO YOUR CURRENT DOMAIN:
+// - Set to 'true' if deploying to your custom domain: https://akarshjjain.com/
+// - Set to 'false' if deploying to default GitHub subdirectory: https://akarshjjain.github.io/akarshjjain-portfolio/
+const isCustomDomain = true; 
+
 export default defineConfig({
-  base: '/akarshjjain-portfolio/',
+  base: isCustomDomain ? '/' : '/akarshjjain-portfolio/',
 
   plugins: [react()],
 

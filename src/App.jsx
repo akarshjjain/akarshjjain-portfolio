@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
 // ---- EMAILJS CONFIG — fill these in after setting up at https://emailjs.com ----
-const EMAILJS_SERVICE_ID = 'service_xkzn2bb';   
-const EMAILJS_TEMPLATE_ID = 'template_pfnsl0p';  
-const EMAILJS_PUBLIC_KEY = '1Gbsp5nEthZWrGFRs';   
+const EMAILJS_SERVICE_ID = 'service_xkzn2bb';
+const EMAILJS_TEMPLATE_ID = 'template_pfnsl0p';
+const EMAILJS_PUBLIC_KEY = '1Gbsp5nEthZWrGFRs';
 
 // ---- GLOBAL ANALYTICS EVENT TRACKER ----
 const trackEvent = (action, category, label) => {
@@ -242,7 +242,7 @@ export default function App() {
   const [openArticle, setOpenArticle] = useState(null);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState(false);
-  
+
   // Dynamic path-aware client router state: 'home' | 'privacy' | 'terms'
   const [view, setView] = useState('home');
 
@@ -266,7 +266,7 @@ export default function App() {
         }
       }
     };
-    
+
     handleRoute();
     window.addEventListener('hashchange', handleRoute);
     window.addEventListener('popstate', handleRoute);
@@ -354,12 +354,12 @@ export default function App() {
       <a href="#main-content" className="sr-only sr-only-focusable">Skip to main content</a>
 
       {/* ---- FLOATING WHATSAPP CHAT LINK ---- */}
-      <a 
-        href="https://wa.me/919263964505" 
-        className="floating-whatsapp" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        aria-label="Chat on WhatsApp" 
+      <a
+        href="https://wa.me/919263964505"
+        className="floating-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
         onClick={() => trackEvent('click_whatsapp_floating', 'Micro Interactions', 'WhatsApp Click')}
       >
         💬
@@ -368,8 +368,8 @@ export default function App() {
       {/* ---- NAV BAR (HEADER LANDMARK) ---- */}
       <header className="nav">
         <div className="nav-inner">
-          <button 
-            className="nav-logo" 
+          <button
+            className="nav-logo"
             onClick={() => {
               if (view !== 'home') {
                 setView('home');
@@ -381,7 +381,7 @@ export default function App() {
           >
             AJJ<span className="logo-dot">.</span>
           </button>
-          
+
           <nav aria-label="Main Navigation">
             <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
               {NAV_LINKS.map(l => (
@@ -394,18 +394,18 @@ export default function App() {
               </li>
             </ul>
           </nav>
-          
+
           <div className="nav-actions">
-            <button 
-              className="theme-toggle" 
-              onClick={() => setDark(!dark)} 
+            <button
+              className="theme-toggle"
+              onClick={() => setDark(!dark)}
               aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
             >
               {dark ? '☀' : '☾'}
             </button>
-            <button 
-              className="menu-btn" 
-              onClick={() => setMenuOpen(!menuOpen)} 
+            <button
+              className="menu-btn"
+              onClick={() => setMenuOpen(!menuOpen)}
               aria-expanded={menuOpen}
               aria-label="Toggle navigation menu"
             >
@@ -443,25 +443,25 @@ export default function App() {
                   </div>
 
                   <div className="hero-cta reveal">
-                    <button 
-                      className="btn-primary" 
-                      onClick={() => scrollTo('contact')} 
+                    <button
+                      className="btn-primary"
+                      onClick={() => scrollTo('contact')}
                       onClickCapture={() => trackEvent('click_hero_contact', 'Hero Section', 'Contact Button')}
                     >
                       Let's Discuss Your Project
                     </button>
-                    <a 
-                      className="btn-secondary" 
-                      href="/Akarsh Jain_Resume.pdf" 
-                      download 
+                    <a
+                      className="btn-secondary"
+                      href="/Akarsh Jain_Resume.pdf"
+                      download
                       onClick={() => trackEvent('download_cv_hero', 'Hero Section', 'Resume Download')}
                     >
                       Download Resume ↓
                     </a>
-                    <a 
-                      className="btn-ghost" 
-                      href="https://github.com/akarshjjain" 
-                      target="_blank" 
+                    <a
+                      className="btn-ghost"
+                      href="https://github.com/akarshjjain"
+                      target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => trackEvent('click_github_hero', 'Hero Section', 'GitHub Link')}
                     >
@@ -471,14 +471,14 @@ export default function App() {
                 </div>
                 <div className="reveal">
                   <div className="crm-project-img">
-                    <img 
-                      src="/images/imat_dashboard.webp" 
+                    <img
+                      src="/images/imat_dashboard.webp"
                       srcSet="/images/imat_dashboard-600.webp 600w, /images/imat_dashboard-1200.webp 1200w, /images/imat_dashboard.webp 1400w"
                       sizes="(max-width: 768px) 100vw, 600px"
-                      alt="IMAT - Intelligent Inventory Management and ERP Platform Dashboard View" 
-                      loading="eager" 
+                      alt="IMAT - Intelligent Inventory Management and ERP Platform Dashboard View"
+                      loading="eager"
                       decoding="async"
-                      width="600" 
+                      width="600"
                       height="350"
                     />
                   </div>
@@ -511,7 +511,7 @@ export default function App() {
                       <p>Traditional SME systems fail because they ignore loose credit terms, split invoicing, grey inventory, and cash-flow realities. My architectures model these real-world edge cases explicitly to ensure 100% adoption and data integrity.</p>
                     </div>
                   </div>
-                  
+
                   <div className="about-stats reveal" aria-label="Key Statistics">
                     {[
                       { num: '9', label: 'IMAT Modules Built' },
@@ -565,10 +565,10 @@ export default function App() {
                       A full-scale custom ERP system built for automobile parts distributors. Solving real supply-chain constraints with transactional integrity and audit-ready accounting.
                     </p>
                   </div>
-                  <a 
-                    href="https://imat.jineshautomotive.com/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://imat.jineshautomotive.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="btn-secondary"
                     onClick={() => trackEvent('click_imat_live_header', 'Projects Section', 'IMAT Header Link')}
                   >
@@ -588,9 +588,9 @@ export default function App() {
                       <li>No central ledgers, forcing tedious weekend accounts reconciliations.</li>
                     </ul>
                   </div>
-                  
+
                   <div className="ps-arrow" aria-hidden="true">→</div>
-                  
+
                   <div className="solution-card">
                     <div className="ps-label ps-solution">The System Solution</div>
                     <h3>IMAT: A Single Integrated MERN Source of Truth.</h3>
@@ -653,11 +653,11 @@ export default function App() {
                 </div>
 
                 <div className="reveal" style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-                  <a 
-                    href="https://imat.jineshautomotive.com/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn-primary" 
+                  <a
+                    href="https://imat.jineshautomotive.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
                     onClick={() => trackEvent('click_imat_demo_bottom', 'Projects Section', 'IMAT Demo Click')}
                   >
                     Launch Live ERP Platform Demo ↗
@@ -699,11 +699,11 @@ export default function App() {
                         <span key={t} className="tech-pill">{t}</span>
                       ))}
                     </div>
-                    <a 
-                      href="https://github.com/akarshjjain/crm-portal-mern" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn-secondary" 
+                    <a
+                      href="https://github.com/akarshjjain/crm-portal-mern"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary"
                       style={{ width: 'fit-content' }}
                       onClick={() => trackEvent('click_crm_github', 'Projects Section', 'CRM GitHub Link')}
                     >
@@ -711,14 +711,14 @@ export default function App() {
                     </a>
                   </div>
                   <div className="crm-project-img">
-                    <img 
-                      src="/images/CRM_home_admin.webp" 
+                    <img
+                      src="/images/CRM_home_admin.webp"
                       srcSet="/images/CRM_home_admin-600.webp 600w, /images/CRM_home_admin-1200.webp 1200w, /images/CRM_home_admin.webp 1400w"
                       sizes="(max-width: 768px) 100vw, 600px"
-                      alt="Custom CRM Software Dashboard illustrating analytical charts and sales tracking columns" 
-                      loading="lazy" 
+                      alt="Custom CRM Software Dashboard illustrating analytical charts and sales tracking columns"
+                      loading="lazy"
                       decoding="async"
-                      width="600" 
+                      width="600"
                       height="375"
                     />
                   </div>
@@ -782,7 +782,7 @@ export default function App() {
                 <p className="section-sub reveal">In-depth guides on database consistency, Indian compliance engineering, and modern web application patterns.</p>
                 <div className="insights-grid">
                   {INSIGHTS.map((ins, i) => (
-                    <article 
+                    <article
                       key={ins.title}
                       className="insight-card reveal"
                       style={{ transitionDelay: `${i * 0.05}s`, cursor: 'pointer' }}
@@ -918,7 +918,7 @@ export default function App() {
                       </ul>
                     </div>
                   </article>
-                  
+
                   <article className="timeline-item reveal">
                     <div className="timeline-dot edu" aria-hidden="true" />
                     <div className="timeline-content">
@@ -974,11 +974,11 @@ export default function App() {
                         { label: 'GitHub Repos', value: 'github.com/akarshjjain', href: 'https://github.com/akarshjjain' },
                         { label: 'WhatsApp Chat', value: '+91 92639 64505', href: 'https://wa.me/919263964505' },
                       ].map(l => (
-                        <a 
-                          key={l.label} 
-                          href={l.href} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
+                        <a
+                          key={l.label}
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="contact-link"
                           onClick={() => trackEvent(`click_contact_${l.label.toLowerCase().replace(' ', '_')}`, 'Contact Section', l.label)}
                         >
@@ -988,7 +988,7 @@ export default function App() {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="contact-form-wrap reveal">
                     {sent ? (
                       <div className="form-success" role="status" aria-live="polite">
@@ -1000,35 +1000,35 @@ export default function App() {
                       <form className="contact-form" onSubmit={handleSubmit} aria-labelledby="contact-heading">
                         <div className="form-group">
                           <label htmlFor="form-name">Your Full Name</label>
-                          <input 
-                            id="form-name" 
-                            type="text" 
-                            required 
-                            placeholder="Your Name" 
-                            value={form.name} 
-                            onChange={e => setForm({ ...form, name: e.target.value })} 
+                          <input
+                            id="form-name"
+                            type="text"
+                            required
+                            placeholder="Your Name"
+                            value={form.name}
+                            onChange={e => setForm({ ...form, name: e.target.value })}
                           />
                         </div>
                         <div className="form-group">
                           <label htmlFor="form-email">Your Email Address</label>
-                          <input 
-                            id="form-email" 
-                            type="email" 
-                            required 
-                            placeholder="Your Email Address" 
-                            value={form.email} 
-                            onChange={e => setForm({ ...form, email: e.target.value })} 
+                          <input
+                            id="form-email"
+                            type="email"
+                            required
+                            placeholder="Your Email Address"
+                            value={form.email}
+                            onChange={e => setForm({ ...form, email: e.target.value })}
                           />
                         </div>
                         <div className="form-group">
                           <label htmlFor="form-msg">Tell Me About Your Operational Obstacles</label>
-                          <textarea 
-                            id="form-msg" 
-                            required 
-                            rows={5} 
-                            placeholder="Tell me about your spreadsheet habits, SKUs, databases, or project goals..." 
-                            value={form.message} 
-                            onChange={e => setForm({ ...form, message: e.target.value })} 
+                          <textarea
+                            id="form-msg"
+                            required
+                            rows={5}
+                            placeholder="Tell me about your spreadsheet habits, SKUs, databases, or project goals..."
+                            value={form.message}
+                            onChange={e => setForm({ ...form, message: e.target.value })}
                           />
                         </div>
                         {sendError && (
@@ -1058,7 +1058,7 @@ export default function App() {
         <div className="container footer-inner">
           <div className="footer-brand">
             <span className="nav-logo">AJJ<span className="logo-dot">.</span></span>
-            <p className="footer-sub">Business Systems Engineer · Noida, UP, India</p>
+            <p className="footer-sub">Operational Systems Builder · Noida, UP, India</p>
           </div>
           <div className="footer-links" aria-label="Footer Nav Links">
             {NAV_LINKS.map(l => (
@@ -1094,9 +1094,9 @@ function PrivacyPolicyView({ setView, navigateToLegal }) {
   return (
     <section className="container section" style={{ padding: '8rem 2rem 4rem' }} aria-labelledby="privacy-title">
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <button 
-          className="btn-secondary" 
-          style={{ marginBottom: '2rem' }} 
+        <button
+          className="btn-secondary"
+          style={{ marginBottom: '2rem' }}
           onClick={() => {
             setView('home');
             window.history.pushState(null, '', '/');
@@ -1106,7 +1106,7 @@ function PrivacyPolicyView({ setView, navigateToLegal }) {
         </button>
         <h1 className="section-h2" id="privacy-title">Privacy Policy</h1>
         <p style={{ color: 'var(--muted)', fontSize: '0.9rem', marginBottom: '2rem' }}>Last Updated: May 12, 2026</p>
-        
+
         <div className="policy-content" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', lineHeight: '1.8', color: 'var(--text2)' }}>
           <p>
             At <strong>akarshjjain.com</strong>, the privacy of our visitors is of extreme importance to us. This Privacy Policy document outlines the types of personal information received and collected by our server and how it is utilized.
@@ -1129,7 +1129,7 @@ function PrivacyPolicyView({ setView, navigateToLegal }) {
 
           <h2 style={{ color: 'var(--text)', fontSize: '1.4rem', marginTop: '1rem' }}>4. Google AdSense &amp; Third-Party Advertising</h2>
           <p>
-            Google, as a third-party vendor, may use cookies to serve ads on this site. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to this site and other sites on the Internet. 
+            Google, as a third-party vendor, may use cookies to serve ads on this site. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to this site and other sites on the Internet.
           </p>
           <p>
             Users may opt-out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>Google Ad Settings</a>. Alternatively, you can opt-out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>www.aboutads.info</a>.
@@ -1164,9 +1164,9 @@ function TermsOfServiceView({ setView, navigateToLegal }) {
   return (
     <section className="container section" style={{ padding: '8rem 2rem 4rem' }} aria-labelledby="terms-title">
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <button 
-          className="btn-secondary" 
-          style={{ marginBottom: '2rem' }} 
+        <button
+          className="btn-secondary"
+          style={{ marginBottom: '2rem' }}
           onClick={() => {
             setView('home');
             window.history.pushState(null, '', '/');
@@ -1176,7 +1176,7 @@ function TermsOfServiceView({ setView, navigateToLegal }) {
         </button>
         <h1 className="section-h2" id="terms-title">Terms of Service</h1>
         <p style={{ color: 'var(--muted)', fontSize: '0.9rem', marginBottom: '2rem' }}>Last Updated: May 12, 2026</p>
-        
+
         <div className="policy-content" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', lineHeight: '1.8', color: 'var(--text2)' }}>
           <p>
             Welcome to the professional portfolio of <strong>Akarsh Jinesh Jain</strong>. By accessing this website (<strong>akarshjjain.com</strong>), you agree to comply with and be bound by the following Terms of Service. Please read these terms carefully.

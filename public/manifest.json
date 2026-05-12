@@ -1,0 +1,18 @@
+{
+  "short_name": "AJJ Portfolio",
+  "name": "Akarsh Jinesh Jain | Business Systems Engineer & Full-Stack MERN Developer",
+  "description": "Custom Inventory Management Software, GST Billing Systems, ERP Systems, and SaaS products built by Akarsh Jinesh Jain.",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "32x32 48x48 64x64 128x128 256x256 512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0a0f1d",
+  "theme_color": "#4f46e5",
+  "display": "standalone",
+  "orientation": "portrait",
+  "categories": ["portfolio", "business", "technology"]
+}

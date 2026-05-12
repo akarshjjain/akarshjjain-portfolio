@@ -470,7 +470,8 @@ export default function App() {
                     <a
                       className="btn-secondary"
                       href="/Akarsh Jain_Resume.pdf"
-                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => trackEvent('download_cv_hero', 'Hero Section', 'Resume Download')}
                     >
                       Download Resume ↓

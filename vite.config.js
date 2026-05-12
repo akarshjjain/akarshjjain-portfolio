@@ -2,10 +2,14 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/akarshjjain-portfolio/',
+
   plugins: [react()],
+
   build: {
     cssCodeSplit: true,
     chunkSizeWarningLimit: 600,
+
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -13,16 +17,20 @@ export default defineConfig({
             if (id.includes('react') || id.includes('react-dom')) {
               return 'vendor-react';
             }
+
             if (id.includes('framer-motion')) {
               return 'vendor-motion';
             }
+
             if (id.includes('lucide-react')) {
               return 'vendor-icons';
             }
+
             return 'vendor-libs';
           }
         }
       },
+
       onwarn(warning, warn) {
         if (
           warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
@@ -30,6 +38,7 @@ export default defineConfig({
         ) {
           return;
         }
+
         warn(warning);
       }
     }

@@ -218,7 +218,7 @@ const TECH_STACK = [
 const TESTIMONIALS = [
   {
     name: 'Umang Mathur',
-    role: 'Chief Technology Officer @ Team1 Consulting',
+    role: 'CTO @ Team1 Consulting',
     text: 'Akarsh builds software that actually reflects how business operations work. The supplier credit ledgers, automatic invoice generation, and audit trails are flawless. Recruiter teams looking for business systems engineers should snap him up immediately.',
   },
   {

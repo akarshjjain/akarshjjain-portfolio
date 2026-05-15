@@ -611,7 +611,7 @@ export default function App() {
 
                   <div className="solution-card">
                     <div className="ps-label ps-solution">The System Solution</div>
-                    <h3>IMAT: A Single Integrated MERN Source of Truth.</h3>
+                    <h3>IMAT: A Cloud-Native, Microservices-Driven Source of Truth.</h3>
                     <ul className="ps-list">
                       <li>Real-time multi-location tracking with bin-mapping and audit records.</li>
                       <li>Automated workflow linking Purchase Orders to GRNs and verified bills.</li>

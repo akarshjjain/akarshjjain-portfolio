@@ -489,16 +489,20 @@ export default function App() {
                 </div>
                 <div className="reveal">
                   <div className="crm-project-img">
-                    <img
-                      src="/images/imat_dashboard.webp"
-                      srcSet="/images/imat_dashboard-600.webp 600w, /images/imat_dashboard-1200.webp 1200w, /images/imat_dashboard.webp 1400w"
-                      sizes="(max-width: 768px) 100vw, 600px"
-                      alt="IMAT - Intelligent Inventory Management and ERP Platform Dashboard View"
-                      loading="eager"
-                      decoding="async"
-                      width="600"
-                      height="350"
-                    />
+                    <picture>
+                      <source media="(max-width: 768px)" srcSet="/images/imat_dashboard-600.webp" />
+                      <img
+                        src="/images/imat_dashboard.webp"
+                        srcSet="/images/imat_dashboard-600.webp 600w, /images/imat_dashboard-1200.webp 1200w, /images/imat_dashboard.webp 1400w"
+                        sizes="(max-width: 768px) 100vw, 600px"
+                        alt="IMAT - Intelligent Inventory Management and ERP Platform Dashboard View"
+                        fetchPriority="high"
+                        loading="eager"
+                        decoding="sync"
+                        width="600"
+                        height="350"
+                      />
+                    </picture>
                   </div>
                 </div>
               </div>
@@ -729,16 +733,19 @@ export default function App() {
                     </a>
                   </div>
                   <div className="crm-project-img">
-                    <img
-                      src="/images/CRM_home_admin.webp"
-                      srcSet="/images/CRM_home_admin-600.webp 600w, /images/CRM_home_admin-1200.webp 1200w, /images/CRM_home_admin.webp 1400w"
-                      sizes="(max-width: 768px) 100vw, 600px"
-                      alt="Custom CRM Software Dashboard illustrating analytical charts and sales tracking columns"
-                      loading="lazy"
-                      decoding="async"
-                      width="600"
-                      height="375"
-                    />
+                    <picture>
+                      <source media="(max-width: 768px)" srcSet="/images/CRM_home_admin-600.webp" />
+                      <img
+                        src="/images/CRM_home_admin.webp"
+                        srcSet="/images/CRM_home_admin-600.webp 600w, /images/CRM_home_admin-1200.webp 1200w, /images/CRM_home_admin.webp 1400w"
+                        sizes="(max-width: 768px) 100vw, 600px"
+                        alt="Custom CRM Software Dashboard illustrating analytical charts and sales tracking columns"
+                        loading="lazy"
+                        decoding="async"
+                        width="600"
+                        height="375"
+                      />
+                    </picture>
                   </div>
                 </div>
               </div>
